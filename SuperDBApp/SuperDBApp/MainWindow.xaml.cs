@@ -20,9 +20,29 @@ namespace SuperDBApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel _viewModel = new MainWindowViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+            Constants.Frame = SFrame;
+            DataContext = _viewModel;
+            _viewModel.ChangeToView(Box.Text);
+        }
+
+        private void ToAddTable(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ChangeToAddTable();
+        }
+
+        private void ToViewTable(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ChangeToView(Box.Text);
+        }
+
+        private void Box_OnSelected(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ChangeToView(((TextBlock) ((ComboBox) sender).SelectedItem).Text);
         }
     }
 }
