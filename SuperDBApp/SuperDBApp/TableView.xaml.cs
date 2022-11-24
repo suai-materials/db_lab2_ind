@@ -95,4 +95,23 @@ public partial class TableView : Page
         
         DataG.Columns.Add(dataGridColTem);
     }
+
+    private void Delete_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (DataG.SelectedItems.Count == 0)
+        {
+            MessageBox.Show("Для удаления выделите хотя бы один элемент");
+        }
+        else
+        {
+            if (MessageBox.Show($"Вы точно хотите удалить {DataG.SelectedItems.Count} элементов?", "", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                return;
+            foreach (var employee in DataG.SelectedItems)
+            {
+                Constants.DbDataContext.Employees.Remove((Employee) employee);
+            }
+            Constants.DbDataContext.SaveChanges();
+            Constants.MainWindowViewModel.ChangeToView(tableName);
+        }
+    }
 }
