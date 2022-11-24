@@ -20,7 +20,7 @@ namespace SuperDBApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel _viewModel = new MainWindowViewModel();
+        readonly MainWindowViewModel _viewModel = Constants.MainWindowViewModel;
 
         public MainWindow()
         {
@@ -32,7 +32,7 @@ namespace SuperDBApp
 
         private void ToAddTable(object sender, RoutedEventArgs e)
         {
-            _viewModel.ChangeToAddTable();
+            _viewModel.ChangeToAddTable(Box.Text);
         }
 
         private void ToViewTable(object sender, RoutedEventArgs e)

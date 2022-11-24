@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Dynamic;
 using System.Windows.Controls;
 
@@ -21,6 +22,8 @@ public class MainWindowViewModel: INotifyPropertyChanged
     {
         get => _navButtonsChecked;
     }
+    
+    
 
     public void ChangeToView(string comboBoxSelected)
     {
@@ -34,9 +37,23 @@ public class MainWindowViewModel: INotifyPropertyChanged
         Constants.Frame.Navigate(new TableView(comboBoxSelected));
     }
     
-    public void ChangeToAddTable()
+    public void ChangeToAddTable(string comboBoxSelected)
     {
         _navButtonsChecked = new[] {true, false};
         NotifyPropertyChanged("NavButtonsChecked");
+        if (Constants.Frame.CanGoBack || Constants.Frame.CanGoForward)
+        {
+            Constants.Frame.RemoveBackEntry();
+        }
+
+        switch (comboBoxSelected)
+        {
+            case "Сотрудники":
+                Constants.Frame.Navigate(new AddEmployee());
+                break;
+            default:
+                ChangeToView(comboBoxSelected);
+                break;
+        }
     }
 }

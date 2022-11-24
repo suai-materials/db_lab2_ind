@@ -23,4 +23,5 @@ public static class Constants
     };
 
     public static Frame Frame = new Frame();
+    public static MainWindowViewModel MainWindowViewModel = new();
 }
