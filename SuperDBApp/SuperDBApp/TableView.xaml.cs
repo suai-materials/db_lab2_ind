@@ -14,7 +14,7 @@ public partial class TableView : Page
 {
     private string tableName;
     private List<DataGridColumn> _toDelete = new();
-    
+
 
     public TableView()
     {
@@ -57,9 +57,11 @@ public partial class TableView : Page
                 break;
             case "Заказчики и их заказы":
                 DataG.ItemsSource = Constants.DbDataContext.CustomerOrders.ToList();
+                DeleteBTN.Visibility = Visibility.Collapsed;
                 break;
             case "Производитель и компоненты":
                 DataG.ItemsSource = Constants.DbDataContext.Manufacture2Components.ToList();
+                DeleteBTN.Visibility = Visibility.Collapsed;
                 break;
         }
     }
@@ -84,7 +86,6 @@ public partial class TableView : Page
                 Constants.Frame.Navigate(
                     new AddComponent(Constants.DbDataContext.Components.Find((long) ((Button) sender!).Tag)!));
                 break;
-            
         }
     }
 

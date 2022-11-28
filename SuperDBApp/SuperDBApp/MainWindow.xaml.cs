@@ -44,4 +44,14 @@ public partial class MainWindow : Window
     {
         _viewModel.ChangeToView(((TextBlock) ((ComboBox) sender).SelectedItem).Text);
     }
+
+    private void ToQueryOne(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToQueryOne();
+    }
+
+    private void ToQueryTwo(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToQueryTwo();
+    }
 }

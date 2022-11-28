@@ -1,0 +1,16 @@
+﻿<Page x:Class="SuperDBApp.QueryOne"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="QueryOne">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ComboBox SelectionChanged="Customer_Changed" Name="CustomerCombo" />
+        <DataGrid Name="DataGrid" Grid.Row="1" />
+    </Grid>
+</Page>

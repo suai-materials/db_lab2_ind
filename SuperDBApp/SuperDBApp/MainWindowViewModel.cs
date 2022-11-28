@@ -17,14 +17,14 @@ public class MainWindowViewModel : INotifyPropertyChanged
     }
 
     public bool ReturnButtonVis { get; set; } = false;
-    private bool[] _navButtonsChecked = {false, true};
+    private bool[] _navButtonsChecked = {false, true, false, false};
     public bool[] NavButtonsChecked => _navButtonsChecked;
 
 
     public void ChangeToView(string comboBoxSelected)
     {
         Console.WriteLine(comboBoxSelected);
-        _navButtonsChecked = new[] {false, true};
+        _navButtonsChecked = new[] {false, true, false, false};
         NotifyPropertyChanged("NavButtonsChecked");
         if (Constants.Frame.CanGoBack || Constants.Frame.CanGoForward) Constants.Frame.RemoveBackEntry();
         Constants.Frame.Navigate(new TableView(comboBoxSelected));
@@ -32,7 +32,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     public void ChangeToAddTable(string comboBoxSelected)
     {
-        _navButtonsChecked = new[] {true, false};
+        _navButtonsChecked = new[] {true, false, false, false};
         NotifyPropertyChanged("NavButtonsChecked");
         if (Constants.Frame.CanGoBack || Constants.Frame.CanGoForward) Constants.Frame.RemoveBackEntry();
 
@@ -48,5 +48,22 @@ public class MainWindowViewModel : INotifyPropertyChanged
                 ChangeToView(comboBoxSelected);
                 break;
         }
+    }
+
+    public void ChangeToQueryOne()
+    {
+        _navButtonsChecked = new[] {false, false, true, false};
+        NotifyPropertyChanged("NavButtonsChecked");
+
+        if (Constants.Frame.CanGoBack || Constants.Frame.CanGoForward) Constants.Frame.RemoveBackEntry();
+        Constants.Frame.Navigate(new QueryOne());
+    }
+
+    public void ChangeToQueryTwo()
+    {
+        _navButtonsChecked = new[] {false, false, false, true};
+        NotifyPropertyChanged("NavButtonsChecked");
+        if (Constants.Frame.CanGoBack || Constants.Frame.CanGoForward) Constants.Frame.RemoveBackEntry();
+        Constants.Frame.Navigate(new QueryTwo());
     }
 }

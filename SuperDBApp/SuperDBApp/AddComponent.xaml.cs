@@ -10,20 +10,22 @@ public partial class AddComponent : Page
 {
     private AddComponentViewModel _addComponentViewModel = new();
 
-    
+
     public AddComponent()
     {
         InitializeComponent();
         DataContext = _addComponentViewModel;
     }
 
-    public AddComponent(Component component): this()
+    public AddComponent(Component component) : this()
     {
         _addComponentViewModel = new AddComponentViewModel(component);
         DataContext = _addComponentViewModel;
         TypeCombo.SelectedItem = Constants.DbDataContext.Types.First(p => component.TypeId == p.Id).Name;
-        ManuCombo.SelectedItem = Constants.DbDataContext.Manufacturers.First(manufacturer  => component.ManufacturerId == manufacturer.Id).Name;
-        CountryCombo.SelectedItem = Constants.DbDataContext.Countries.First(country => country.Id == component.ManCountry).Name;
+        ManuCombo.SelectedItem = Constants.DbDataContext.Manufacturers
+            .First(manufacturer => component.ManufacturerId == manufacturer.Id).Name;
+        CountryCombo.SelectedItem =
+            Constants.DbDataContext.Countries.First(country => country.Id == component.ManCountry).Name;
         _addComponentViewModel.Date = DateTime.Parse(component.ReleaseDate);
 
         SubmitButton.Content = "Сохранить";

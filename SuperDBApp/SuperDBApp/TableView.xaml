@@ -17,6 +17,6 @@
             <DataGrid.Resources>
             </DataGrid.Resources>
         </DataGrid>
-        <Button Click="Delete_OnClick" HorizontalAlignment="Center" Grid.Row="1">Удалить</Button>
+        <Button Click="Delete_OnClick" Name="DeleteBTN" HorizontalAlignment="Center" Grid.Row="1">Удалить</Button>
     </Grid>
 </Page>

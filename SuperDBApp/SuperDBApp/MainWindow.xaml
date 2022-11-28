@@ -39,6 +39,14 @@
                           Height="32">
                 Просмотр таблицы
             </ToggleButton>
+            <ToggleButton Click="ToQueryOne" IsChecked="{Binding NavButtonsChecked[2]}" Margin="0, 10, 0, 0"
+                          Height="32">
+                Запрос 1.
+            </ToggleButton>
+            <ToggleButton Click="ToQueryTwo" IsChecked="{Binding NavButtonsChecked[3]}" Margin="0, 10, 0, 0"
+                          Height="32">
+                Запрос 2.
+            </ToggleButton>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Margin="0,10,0,0" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
                Name="SFrame" />

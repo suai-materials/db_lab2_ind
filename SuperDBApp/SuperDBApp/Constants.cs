@@ -11,7 +11,7 @@ public static class Constants
 {
     public static DbDataContext DbDataContext = new();
 
-    public static Dictionary<string, string> NameToTableName = new()
+    /*public static Dictionary<string, string> NameToTableName = new()
     {
         {"Сотрудники", "Employees"},
         {"Компоненты", "Components"},
@@ -20,7 +20,7 @@ public static class Constants
         {"Сервисы", "Services"},
         {"Заказчики и их заказы", "CustomerOrders"},
         {"Производитель и компоненты", "Manufacture2Components"}
-    };
+    };*/
 
     public static Frame Frame = new();
     public static MainWindowViewModel MainWindowViewModel = new();
