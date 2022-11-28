@@ -104,7 +104,6 @@ public partial class TableView : Page
             factory1.SetValue(TagProperty, binding);
             dataTemplate.VisualTree = factory1;
             dataGridColTem.CellTemplate = dataTemplate;
-
             DataG.Columns.Add(dataGridColTem);
         }
     }
