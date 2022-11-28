@@ -13,7 +13,7 @@ public class AddComponentViewModel
     public List<string> Types { get; set; } = Constants.DbDataContext.Types.Select(s => s.Name).ToList();
     public List<string> Manufactures { get; set; } = Constants.DbDataContext.Manufacturers.Select(s => s.Name).ToList();
     public List<string> Countries { get; set; } = Constants.DbDataContext.Countries.Select(s => s.Name).ToList();
-    public DateTime Date = DateTime.Now;
+    public DateTime Date { get; set; }= DateTime.Now;
 
     public Component NewComponent { get; set; } = new();
 
@@ -67,6 +67,7 @@ public class AddComponentViewModel
 
     public void SetDate(DateTime? selectedDate)
     {
+        if (selectedDate is null) return;
         NewComponent.ReleaseDate = selectedDate!.Value.ToShortDateString();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using DbContext;
 
 namespace SuperDBApp;
 
@@ -13,6 +15,18 @@ public partial class AddComponent : Page
     {
         InitializeComponent();
         DataContext = _addComponentViewModel;
+    }
+
+    public AddComponent(Component component): this()
+    {
+        _addComponentViewModel = new AddComponentViewModel(component);
+        DataContext = _addComponentViewModel;
+        TypeCombo.SelectedItem = Constants.DbDataContext.Types.First(p => component.TypeId == p.Id).Name;
+        ManuCombo.SelectedItem = Constants.DbDataContext.Manufacturers.First(manufacturer  => component.ManufacturerId == manufacturer.Id).Name;
+        CountryCombo.SelectedItem = Constants.DbDataContext.Countries.First(country => country.Id == component.ManCountry).Name;
+        _addComponentViewModel.Date = DateTime.Parse(component.ReleaseDate);
+
+        SubmitButton.Content = "Сохранить";
     }
 
     private void TypeSelected(object sender, SelectionChangedEventArgs e)

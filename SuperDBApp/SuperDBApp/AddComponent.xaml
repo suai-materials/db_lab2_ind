@@ -5,46 +5,51 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:SuperDBApp"
       mc:Ignorable="d"
-      Title="AddComponent" >
+      Title="AddComponent">
     <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-        <StackPanel VerticalAlignment="Stretch">
-            <StackPanel>
-                <TextBlock>Тип:</TextBlock>
-                <ComboBox Name="TypeCombo" ItemsSource="{Binding Types}" SelectionChanged="TypeSelected" />
+        <ScrollViewer>
+            <StackPanel VerticalAlignment="Stretch">
+                <StackPanel>
+                    <TextBlock>Тип:</TextBlock>
+                    <ComboBox Name="TypeCombo" ItemsSource="{Binding Types}" SelectionChanged="TypeSelected" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Бренд:</TextBlock>
+                    <TextBox Text="{Binding NewComponent.Brand}" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Производитель:</TextBlock>
+                    <ComboBox Name="ManuCombo" ItemsSource="{Binding Manufactures}"
+                              SelectionChanged="ManufactureSelected" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Страна-производитель:</TextBlock>
+                    <ComboBox Name="CountryCombo" ItemsSource="{Binding Countries}" SelectionChanged="CountrySelected" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Дата релиза:</TextBlock>
+                    <Calendar Name="CalendarIk" SelectedDatesChanged="DateChanged"
+                              SelectedDate="{Binding Date}" DisplayDate="{Binding Date}">
+                    </Calendar>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Характеристики:</TextBlock>
+                    <TextBox Text="{Binding NewComponent.Characteristics}" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Гарантия:</TextBlock>
+                    <TextBox Text="{Binding NewComponent.Warranty}" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Описание:</TextBlock>
+                    <TextBox Text="{Binding NewComponent.Description}" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock>Цена:</TextBlock>
+                    <TextBox Text="{Binding NewComponent.Price}" />
+                </StackPanel>
+                <Button Name="SubmitButton" Click="Add" Margin="20">Добавить</Button>
             </StackPanel>
-            <StackPanel>
-                <TextBlock>Бренд:</TextBlock>
-                <TextBox Text="{Binding NewComponent.Brand}" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Производитель:</TextBlock>
-                <ComboBox Name="ManuCombo" ItemsSource="{Binding Manufactures}" SelectionChanged="ManufactureSelected" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Страна-производитель:</TextBlock>
-                <ComboBox Name="CountryCombo" ItemsSource="{Binding Countries}" SelectionChanged="CountrySelected" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Дата релиза:</TextBlock>
-                <Calendar SelectedDatesChanged="DateChanged" SelectedDate="{Binding NewComponent.Date}"></Calendar>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Характеристики:</TextBlock>
-                <TextBox Text="{Binding NewComponent.Characteristics}" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Гарантия:</TextBlock>
-                <TextBox Text="{Binding NewComponent.Warranty}" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Описание:</TextBlock>
-                <TextBox Text="{Binding NewComponent.Description}" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock>Цена:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.Price}" />
-            </StackPanel>
-            <Button Name="SubmitButton" Click="Add" Margin="20">Добавить</Button>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -80,6 +80,10 @@ public partial class TableView : Page
                 Constants.Frame.Navigate(
                     new AddEmployee(Constants.DbDataContext.Employees.Find((long) ((Button) sender!).Tag)!));
                 break;
+            case "Компоненты":
+                Constants.Frame.Navigate(
+                    new AddComponent(Constants.DbDataContext.Components.Find((long) ((Button) sender!).Tag)!));
+                break;
             
         }
     }
@@ -88,7 +92,7 @@ public partial class TableView : Page
     {
         foreach (var dataGridColumn in _toDelete) DataG.Columns.Remove(dataGridColumn);
 
-        if (tableName == "Сотрудники")
+        if (tableName == "Сотрудники" || tableName == "Компоненты")
         {
             var dataGridColTem = new DataGridTemplateColumn();
             DataTemplate dataTemplate = new();
