@@ -3,21 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SuperDBApp"
         mc:Ignorable="d"
         Title="Крутая компания" Height="500" Width="800"
         MinHeight="500"
-        MinWidth="800" Background="#FBFDFB" >
+        MinWidth="800" Background="#FBFDFB">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="2*" />
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ComboBox SelectionChanged="Box_OnSelected" Name="Box" SelectedIndex="0">
             <TextBlock>Сотрудники</TextBlock>
@@ -33,11 +32,15 @@
                    FontSize="20">
             Крутая компания©
         </TextBlock>
-        <Rectangle Grid.Row="1" Fill="#DBE5E1"></Rectangle>
+        <Rectangle Grid.Row="1" Fill="#DBE5E1" />
         <StackPanel Grid.Row="1" Name="NavView" Margin="12" HorizontalAlignment="Stretch" Orientation="Vertical">
-            <ToggleButton Click="ToAddTable" IsChecked="{Binding NavButtonsChecked[0]}"  Height="32">Добавить в таблицу</ToggleButton>
-            <ToggleButton Click="ToViewTable" IsChecked="{Binding NavButtonsChecked[1]}" Margin="0, 10, 0, 0" Height="32">Просмотр таблицы</ToggleButton>
+            <ToggleButton Click="ToAddTable" IsChecked="{Binding NavButtonsChecked[0]}" Height="32">Добавить в таблицу</ToggleButton>
+            <ToggleButton Click="ToViewTable" IsChecked="{Binding NavButtonsChecked[1]}" Margin="0, 10, 0, 0"
+                          Height="32">
+                Просмотр таблицы
+            </ToggleButton>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" Margin="0,10,0,0" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Name="SFrame" ></Frame>
+        <Frame NavigationUIVisibility="Hidden" Margin="0,10,0,0" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+               Name="SFrame" />
     </Grid>
 </Window>

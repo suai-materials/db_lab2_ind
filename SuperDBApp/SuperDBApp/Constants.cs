@@ -13,7 +13,7 @@ public static class Constants
 
     public static Dictionary<string, string> NameToTableName = new()
     {
-        {"Сотрудники", "Employees"}, 
+        {"Сотрудники", "Employees"},
         {"Компоненты", "Components"},
         {"Должности", "Positions"},
         {"Заказы", "Order"},
@@ -22,6 +22,6 @@ public static class Constants
         {"Производитель и компоненты", "Manufacture2Components"}
     };
 
-    public static Frame Frame = new Frame();
+    public static Frame Frame = new();
     public static MainWindowViewModel MainWindowViewModel = new();
 }

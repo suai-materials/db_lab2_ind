@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DbContext;
 
-public partial class Employee: Object
+public partial class Employee : object
 {
     public long Id { get; set; }
 

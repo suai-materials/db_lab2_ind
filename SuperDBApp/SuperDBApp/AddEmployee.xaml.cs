@@ -9,13 +9,14 @@ namespace SuperDBApp;
 public partial class AddEmployee : Page
 {
     private AddEmployeeViewModel _addEmployeeViewModel = new();
+
     public AddEmployee()
     {
         InitializeComponent();
         DataContext = _addEmployeeViewModel;
     }
 
-    public AddEmployee(Employee employee): this()
+    public AddEmployee(Employee employee) : this()
     {
         _addEmployeeViewModel = new AddEmployeeViewModel(employee);
         DataContext = _addEmployeeViewModel;
@@ -26,12 +27,12 @@ public partial class AddEmployee : Page
 
     private void Sex_Selected(object sender, SelectionChangedEventArgs e)
     {
-        _addEmployeeViewModel.SetSex((String) ((ComboBox) sender).SelectedItem);
+        _addEmployeeViewModel.SetSex((string) ((ComboBox) sender).SelectedItem);
     }
 
     private void Position_Selected(object sender, SelectionChangedEventArgs e)
     {
-        _addEmployeeViewModel.SetPosition((String) ((ComboBox) sender).SelectedItem);
+        _addEmployeeViewModel.SetPosition((string) ((ComboBox) sender).SelectedItem);
     }
 
     private void Add(object sender, RoutedEventArgs e)

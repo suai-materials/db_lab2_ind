@@ -3,46 +3,46 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:SuperDBApp"
       mc:Ignorable="d"
-      Title="AddItem" >
+      Title="AddItem">
     <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Stretch">
         <StackPanel VerticalAlignment="Stretch">
             <StackPanel>
                 <TextBlock>Имя:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.FirstName}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.FirstName}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Фамилия:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.LastName}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.LastName}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Отчетство:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.SecondName}" ></TextBox>
+                <TextBox Text="{Binding NewEmployee.SecondName}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Возраст:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.Age}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.Age}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Пол:</TextBlock>
-                <ComboBox Name="SexComboBox" ItemsSource="{Binding Sexes}" SelectionChanged="Sex_Selected"></ComboBox>
+                <ComboBox Name="SexComboBox" ItemsSource="{Binding Sexes}" SelectionChanged="Sex_Selected" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Адрес:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.Address}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.Address}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Номер телефона:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.PhoneNumber}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.PhoneNumber}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Паспортные данные:</TextBlock>
-                <TextBox Text="{Binding NewEmployee.PassportDetails}"></TextBox>
+                <TextBox Text="{Binding NewEmployee.PassportDetails}" />
             </StackPanel>
             <StackPanel>
                 <TextBlock>Должность</TextBlock>
-                <ComboBox Name="PositionComboBox" ItemsSource="{Binding Positions}" SelectionChanged="Position_Selected"></ComboBox>
+                <ComboBox Name="PositionComboBox" ItemsSource="{Binding Positions}"
+                          SelectionChanged="Position_Selected" />
             </StackPanel>
             <Button Name="SubmitButton" Click="Add" Margin="20">Добавить</Button>
         </StackPanel>

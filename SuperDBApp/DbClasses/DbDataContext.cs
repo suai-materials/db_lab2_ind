@@ -40,7 +40,7 @@ public partial class DbDataContext : Microsoft.EntityFrameworkCore.DbContext
     public virtual DbSet<Type> Types { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlite("Data Source=C:\\Users\\user\\Desktop\\labs\\04.01\\db_lab2_ind\\company.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -203,7 +203,7 @@ public partial class DbDataContext : Microsoft.EntityFrameworkCore.DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => new { e.CustomerId, e.EmployeeId });
+            entity.HasKey(e => new {e.CustomerId, e.EmployeeId});
 
             entity.ToTable("Order");
 
@@ -228,11 +228,14 @@ public partial class DbDataContext : Microsoft.EntityFrameworkCore.DbContext
             entity.Property(e => e.ServiceId2).HasColumnName("service_id_2");
             entity.Property(e => e.ServiceId3).HasColumnName("service_id_3");
 
-            entity.HasOne(d => d.ComponentId1Navigation).WithMany(p => p.OrderComponentId1Navigations).HasForeignKey(d => d.ComponentId1);
+            entity.HasOne(d => d.ComponentId1Navigation).WithMany(p => p.OrderComponentId1Navigations)
+                .HasForeignKey(d => d.ComponentId1);
 
-            entity.HasOne(d => d.ComponentId2Navigation).WithMany(p => p.OrderComponentId2Navigations).HasForeignKey(d => d.ComponentId2);
+            entity.HasOne(d => d.ComponentId2Navigation).WithMany(p => p.OrderComponentId2Navigations)
+                .HasForeignKey(d => d.ComponentId2);
 
-            entity.HasOne(d => d.ComponentId3Navigation).WithMany(p => p.OrderComponentId3Navigations).HasForeignKey(d => d.ComponentId3);
+            entity.HasOne(d => d.ComponentId3Navigation).WithMany(p => p.OrderComponentId3Navigations)
+                .HasForeignKey(d => d.ComponentId3);
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CustomerId)
@@ -242,11 +245,14 @@ public partial class DbDataContext : Microsoft.EntityFrameworkCore.DbContext
                 .HasForeignKey(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            entity.HasOne(d => d.ServiceId1Navigation).WithMany(p => p.OrderServiceId1Navigations).HasForeignKey(d => d.ServiceId1);
+            entity.HasOne(d => d.ServiceId1Navigation).WithMany(p => p.OrderServiceId1Navigations)
+                .HasForeignKey(d => d.ServiceId1);
 
-            entity.HasOne(d => d.ServiceId2Navigation).WithMany(p => p.OrderServiceId2Navigations).HasForeignKey(d => d.ServiceId2);
+            entity.HasOne(d => d.ServiceId2Navigation).WithMany(p => p.OrderServiceId2Navigations)
+                .HasForeignKey(d => d.ServiceId2);
 
-            entity.HasOne(d => d.ServiceId3Navigation).WithMany(p => p.OrderServiceId3Navigations).HasForeignKey(d => d.ServiceId3);
+            entity.HasOne(d => d.ServiceId3Navigation).WithMany(p => p.OrderServiceId3Navigations)
+                .HasForeignKey(d => d.ServiceId3);
         });
 
         modelBuilder.Entity<Position>(entity =>

@@ -10,14 +10,14 @@ namespace SuperDBApp;
 
 public class AddEmployeeViewModel
 {
-    public List<String> Sexes { get; set; } = Constants.DbDataContext.Sexes.Select(s => s.Name).ToList();
-    public List<String> Positions { get; set; } = Constants.DbDataContext.Positions.Select(s => s.Name).ToList();
-    public Employee NewEmployee  { get; set; } = new Employee();
+    public List<string> Sexes { get; set; } = Constants.DbDataContext.Sexes.Select(s => s.Name).ToList();
+    public List<string> Positions { get; set; } = Constants.DbDataContext.Positions.Select(s => s.Name).ToList();
+    public Employee NewEmployee { get; set; } = new();
 
     public AddEmployeeViewModel()
     {
     }
-    
+
     public AddEmployeeViewModel(Employee newEmployee)
     {
         NewEmployee = newEmployee;
@@ -38,20 +38,16 @@ public class AddEmployeeViewModel
         try
         {
             if (NewEmployee.Id != 0)
-            {
                 Constants.DbDataContext.Employees.Update(NewEmployee);
-            }
             else
-            {
                 Constants.DbDataContext.Employees.Add(NewEmployee);
-            }
             Constants.DbDataContext.SaveChanges();
             Constants.MainWindowViewModel.ChangeToView("Сотрудники");
         }
         catch (DbUpdateException e)
         {
             Console.WriteLine(e);
-            switch ((e.InnerException! as SqliteException )!.SqliteErrorCode)
+            switch ((e.InnerException! as SqliteException)!.SqliteErrorCode)
             {
                 case 19:
                     MessageBox.Show(
@@ -60,5 +56,4 @@ public class AddEmployeeViewModel
             }
         }
     }
-    
 }

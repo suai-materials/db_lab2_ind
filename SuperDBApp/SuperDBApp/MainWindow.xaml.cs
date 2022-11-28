@@ -13,36 +13,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SuperDBApp
+namespace SuperDBApp;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    private readonly MainWindowViewModel _viewModel = Constants.MainWindowViewModel;
+
+    public MainWindow()
     {
-        readonly MainWindowViewModel _viewModel = Constants.MainWindowViewModel;
+        InitializeComponent();
+        Constants.Frame = SFrame;
+        DataContext = _viewModel;
+        _viewModel.ChangeToView(Box.Text);
+    }
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            Constants.Frame = SFrame;
-            DataContext = _viewModel;
-            _viewModel.ChangeToView(Box.Text);
-        }
+    private void ToAddTable(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToAddTable(Box.Text);
+    }
 
-        private void ToAddTable(object sender, RoutedEventArgs e)
-        {
-            _viewModel.ChangeToAddTable(Box.Text);
-        }
+    private void ToViewTable(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToView(Box.Text);
+    }
 
-        private void ToViewTable(object sender, RoutedEventArgs e)
-        {
-            _viewModel.ChangeToView(Box.Text);
-        }
-
-        private void Box_OnSelected(object sender, RoutedEventArgs e)
-        {
-            _viewModel.ChangeToView(((TextBlock) ((ComboBox) sender).SelectedItem).Text);
-        }
+    private void Box_OnSelected(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToView(((TextBlock) ((ComboBox) sender).SelectedItem).Text);
     }
 }
