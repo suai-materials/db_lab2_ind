@@ -47,6 +47,10 @@
                           Height="32">
                 Запрос 2.
             </ToggleButton>
+            <ToggleButton Click="ToQueryThree" IsChecked="{Binding NavButtonsChecked[4]}" Margin="0, 10, 0, 0"
+                          Height="32">
+                Запрос 3.
+            </ToggleButton>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden" Margin="0,10,0,0" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
                Name="SFrame" />

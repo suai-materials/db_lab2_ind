@@ -54,4 +54,9 @@ public partial class MainWindow : Window
     {
         _viewModel.ChangeToQueryTwo();
     }
+
+    private void ToQueryThree(object sender, RoutedEventArgs e)
+    {
+        _viewModel.ChangeToQueryThree();
+    }
 }
