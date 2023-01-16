@@ -1,0 +1,258 @@
+
+1. Уточнить вариант предметной области у преподавателя.
+2. Создать базу данных с тремя связанными таблицами с помощью скрипта в DB Browser for SQLite. Скрипт представить в отчете.
+3. Используя подход  database first, создать настольное приложение, которое будет взаимодействовать с созданной БД.
+4. Реализовать функции добавления, изменения и удаления данных в созданные таблицы(через интерфейс приложения).
+5. Показать работу ограничений(check и  FOREIGN KEY).
+6. Сформулировать запросы:
+   - на выборку, 
+   - на использование статистических функций, 
+   - на соединение таблиц.
+7. Добавить поле в одну из таблиц для хранения даты. Показать работу с датами в SQLite.
+
+
+
+Задание №19: БД Компьютерной фирмы.
+
+Таблицы: 
+
+1) Сотрудники (Код сотрудника, ФИО, Возраст, Пол, Адрес, Телефон, Паспортные данные, Код должности).
+2) Должности (Код должности, Наименование должности, Оклад, Обязанности, Требования)
+3) Виды комплектующих (Код вида, Наименование, Описание)
+4) Комплектующие (Код комплектующего, Код вида, Марка, Фирма производитель, Страна производитель, Дата выпуска, Характеристики, Срок гарантия, Описание, Цена)
+5) Заказчики (Код заказчика, ФИО, Адрес, Телефон).
+6) Услуги (Код услуги, Наименование, Описание, Стоимость)
+7) Заказы (Дата заказа, Дата исполнения, Код заказчика, Код комплектующего 1, Код комплектующего 2, Код комплектующего 3, Доля предоплаты, Отметка об оплате, Отметка об исполнении, Общая стоимость, Срок общей гарантии, Код услуги 1, Код услуги 2, Код услуги 3, Код сотрудника).
+
+Запросы: 
+
+1) Отобразить заказы отдельных заказчиков;
+2) Отобразить комплектующие определенного производителя.
+
+
+Код: 
+
+1. База данных:
+   
+   [[file:images/1.png]]
+
+2. DbClasses - библиотека классов, куда я сгенерировал работу классы для работы с БД
+
+   1. Component.cs
+
+      #+INCLUDE: ./SuperDBApp/DbClasses/Component.cs src c++
+
+   2. Country.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Country.cs src c++
+
+   3. Customer.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Customer.cs src c++
+
+   4. CustomerOrder.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/CustomerOrder.cs src c++
+
+   5. DbDataContext.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/DbDataContext.cs src c++
+
+   6. Employee.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Employee.cs src c++
+
+   7. Manufacture2Component.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Manufacture2Component.cs src c++
+
+   8. Manufacturer.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Manufacturer.cs src c++
+
+   9. Order.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Order.cs src c++
+
+   10. Position.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Position.cs src c++
+
+   11. Service.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Service.cs src c++
+
+   12. Sex.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Sex.cs src c++
+
+   13. Type.cs
+
+       #+INCLUDE: ./SuperDBApp/DbClasses/Type.cs src c++
+
+3. Основное приложение, которое работает с DbClasses
+
+   1. Константы (Constants.cs)
+
+      #+INCLUDE: ./SuperDBApp/SuperDBApp/Constants.cs src c++
+
+   2. Стили (App)
+
+      - App.xaml
+
+	#+INCLUDE: ./SuperDBApp/SuperDBApp/App.xaml src xml
+
+      - App.xaml.cs
+
+	#+INCLUDE: ./SuperDBApp/SuperDBApp/App.xaml.cs src c++
+
+   3. Главное окно (MainWindow)
+
+      - MainWindow.xaml
+
+	#+INCLUDE: ./SuperDBApp/SuperDBApp/MainWindow.xaml src xml
+
+      - MainWindow.xaml.xs
+
+	#+INCLUDE: ./SuperDBApp/SuperDBApp/MainWindow.xaml.cs src c++
+
+      - MainWindowViewModel.cs
+
+	#+INCLUDE: ./SuperDBApp/SuperDBApp/MainWindowViewModel.cs src c++
+
+   4. Просмотр таблиц (TableView)
+
+      - TableView.xaml
+	
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/TableView.xaml src xml
+
+      - TableView.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/TableView.xaml.cs src c++
+
+   5. Добавление компонента (AddComponent)
+
+      - AddComponent.xaml
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/AddComponent.xaml src xml
+
+      - AddComponent.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/AddComponent.xaml.cs src c++
+
+   6. Добавление сотрудника (AddEmployee)
+
+      - AddEmployee.xaml
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/AddEmployee.xaml src xml
+
+      - AddEmployee.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/AddEmployee.xaml.cs src c++
+
+   7. Запрос 1 (QueryOne)
+      
+      Получение заказчиков и их заказов.
+
+      - QueryOne.xaml
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryOne.xaml src xml
+
+      - QueryOne.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryOne.xaml.cs src c++
+
+   8. Запрос 2 (QueryTwo)
+
+      Получение компонентов по бренду.
+
+      - QueryTwo.xaml
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryTwo.xaml src xml
+
+      - QueryTwo.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryTwo.xaml.cs src c++
+
+   9. Запрос 3 (QueryThree)
+
+      Получение сотрудника с самой большой зарплатой.
+
+      - QueryThree.xaml
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryThree.xaml src xml
+
+      - QueryThree.xaml.cs
+
+	#+INCLUDE:  ./SuperDBApp/SuperDBApp/QueryThree.xaml.cs src c++
+
+Демонстрация работы приложения:
+
+1. Отображение таблиц
+
+   [[file:images/2.jpg]]
+
+   [[file:images/3.jpg]]
+
+   [[file:images/4.jpg]]
+
+   [[file:images/5.jpg]]
+
+   [[file:images/6.jpg]]
+
+   [[file:images/7.jpg]]
+
+   [[file:images/8.jpg]]
+
+2. Добавление сотрудника
+
+   - Добавление без ошибок
+     
+     [[file:images/9.jpg]]
+
+     [[file:images/14.jpg]]
+
+     [[file:images/15.jpg]]
+
+   - Возможные ошибки
+
+     [[file:images/10.jpg]]
+
+     [[file:images/11.jpg]]
+
+     [[file:images/12.jpg]]
+
+     [[file:images/13.jpg]]
+
+3. Изменение сотрудника
+
+     [[file:images/16.jpg]]
+
+4. Добавление компонента
+
+     [[file:images/17.jpg]]
+
+     [[file:images/18.jpg]]
+
+     [[file:images/19.jpg]]
+
+5. Запрос 1
+
+     [[file:images/20.jpg]]
+
+     [[file:images/21.jpg]]
+
+6. Запрос 2
+
+     [[file:images/22.jpg]]
+
+7. Запрос 3
+
+     [[file:images/23.jpg]]
+
+
+
+
+
+
+
